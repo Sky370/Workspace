@@ -35,18 +35,17 @@ del_x3 = [RF[i]*(np.sin(inc_rad[i])*np.cos(az_rad[i])+np.sin(inc_rad[i+1])*np.co
 del_y3 = [RF[i]*(np.sin(inc_rad[i])*np.sin(az_rad[i])+np.sin(inc_rad[i+1])*np.sin(az_rad[i+1])) for i in range(len(MD)-1)]
 del_z3 = [RF[i]*(np.cos(inc_rad[i])+np.cos(inc_rad[i+1])) for i in range(len(MD)-1)]
 
+# Data for three-dimensional line and points
+x = [sum(del_x[:i+1]) for i in range(len(del_x))]
+y = [sum(del_y[:i+1]) for i in range(len(del_y))]
+z = [-sum(del_z[:i+1]) for i in range(len(del_z))]
+x.insert(0,0)
+y.insert(0,0)
+z.insert(0,0)
+
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-# Data for a three-dimensional line
-zline = [100 + del_z[i] for i in range(len(del_z))]
-xline = del_x
-yline = del_y
-ax.plot3D(xline, yline, zline, 'gray')
-
-# Data for three-dimensional scattered points
-zdata = del_z
-xdata = del_x
-ydata = del_y
-ax.scatter3D(xdata, ydata, zdata, c=zdata, cmap='Greens')
+ax.plot3D(x, y, z, 'grey')
+ax.scatter3D(x, y, z, c=z, cmap='magma')
 
 plt.show()
