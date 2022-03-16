@@ -38,7 +38,7 @@ del_z3 = [RF[i]*(np.cos(inc_rad[i])+np.cos(inc_rad[i+1])) for i in range(len(MD)
 fig = plt.figure()
 ax = plt.axes(projection='3d')
 # Data for a three-dimensional line
-zline = del_z
+zline = [100 + del_z[i] for i in range(len(del_z))]
 xline = del_x
 yline = del_y
 ax.plot3D(xline, yline, zline, 'gray')
