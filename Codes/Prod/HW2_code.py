@@ -5,14 +5,17 @@ Author: elh1873
 
 import pandas as pd
 import numpy as np
+import os 
 
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+my_file = os.path.join(THIS_FOLDER, 'Data_HW2.xlsx')
 
 # ----- >>>>>>
 # Problem 2 (a)
 # We will try to use pandas in order to use the .xlsx file for our project
 
-df = pd.read_excel('Data_HW2.xlsx')
-# print (df)
+
+df = pd.read_excel(my_file)
 
 mol = df["Moles, (mol)"].tolist()
 bp = df["B.P.\n(˚F)"].tolist()
